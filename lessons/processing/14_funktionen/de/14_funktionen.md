@@ -7,60 +7,58 @@
 
 Bei der Einführung von sich endlos [[lesson:10|wiederholenden Programmen]] haben wir zwei Bestandteile kennengelernt, die wir bisher nicht weiter hinterfragt hatten.
 
-[code|processing]
+```processing
 void setup() {
 }
 
 void draw() {
 }
-[/code]
+```
 
 Auch die Events für [[lesson:37#mausinteraktion|Mouseclicks]] und [[lesson:37#tastaturinteraktion|Tastatureingaben]] funktionierten nach dem selben Prinzip.
 
-[code|processing]
+```processing
 void mousePressed() {
 }
 
 void keyPressed() {
 }
-[/code]
+```
 
-Mithilfe dieser Statements können wir unser Programm bisher in "Funktionsbereiche" unterteilen. Daher kommt auch der Name dieser Bestandteile: //Funktionen.// Jeder dieser Bereiche hat seine fest definierte Aufgabe, z.B.:
+Mithilfe dieser Statements können wir unser Programm bisher in "Funktionsbereiche" unterteilen. Daher kommt auch der Name dieser Bestandteile: *Funktionen.* Jeder dieser Bereiche hat seine fest definierte Aufgabe, z.B.:
   * **setup()** - wird einmal zu Beginn des Programms ausgeführt
   * **void draw()** - wird, je nach [[processing-reference:frameRate()]] pro Sekunde ausgeführt (default 60 Frames pro Sekunde) - Hauptteil unseres Processing Programms.
   * **mousePressed()** - wird **einmal** ausgeführt, wenn die Maus gedrückt wird (Vergleiche dazu [[processing-reference:mousePressed]])
   * **keyPressed()** - wird **einmal** ausgeführt, wenn eine Taste auf der Tastatur gedrückt wird (Vergleiche dazu [[processing-reference:keyPressed]])
-Neben den von Processing vordefinierten Funktionen (weitere können über die [[http://www.processing.org/reference/|Reference]] gefunden werden) haben wir auch die Möglichkeit eigene Funktionen zu schreiben und somit Programme gemäß unseren Anforderungen zu strukturieren. Dabei schreiben wir für jede Aufgabe die wir über unseren Code realisieren wollen eine //Funktion//. Diese können wir dann, wann immer wir sie brauchen, aufrufen. Das hat zwei große Vorteile:
+Neben den von Processing vordefinierten Funktionen (weitere können über die [[http://www.processing.org/reference/|Reference]] gefunden werden) haben wir auch die Möglichkeit eigene Funktionen zu schreiben und somit Programme gemäß unseren Anforderungen zu strukturieren. Dabei schreiben wir für jede Aufgabe die wir über unseren Code realisieren wollen eine *Funktion*. Diese können wir dann, wann immer wir sie brauchen, aufrufen. Das hat zwei große Vorteile:
   - Unser Code wird kürzer und übersichtlicher.
   - Wir brauchen Codeteile nicht immer und immer wieder zu schreiben, was die Fehlerquote senkt.
-Dieses Prinzip, komplexe Aufgaben in ihre Grundbestandteile zu gliedern, um diese später einfach wiederverwenden zu können, bezeichnet man als //Modularität//.
+Dieses Prinzip, komplexe Aufgaben in ihre Grundbestandteile zu gliedern, um diese später einfach wiederverwenden zu können, bezeichnet man als *Modularität*.
 
-=== Aufbau von Funktionen ===
+### Aufbau von Funktionen
+Funktionen sind aus folgenden Bestandteilen zusammengesetzt: *Name*, //Parameter (auch mehrere)//, *Rückgabewert*. Diese werden im Code wiefolgt notiert:
 
-Funktionen sind aus folgenden Bestandteilen zusammengesetzt: //Name//, //Parameter (auch mehrere)//, //Rückgabewert//. Diese werden im Code wiefolgt notiert:
-
-[code|processing]
+```processing
 // ohne Parameter
 Rückgabewert Name () {
-}[/code]
+}```
 
-[code|processing]
+```processing
 // mit einem Parameter
 Rückgabewert Name (Parameter) {
-}[/code]
+}```
 
-[code|processing]
+```processing
 // mit mehreren Parametern
 Rückgabewert Name (Parameter1, Parameter2) {
-}[/code]
+}```
 
 An der Stelle des Rückgabewertes haben wir bisher nur ''void'' (engl. leer) kennen gelernt - kein Rückgabewert.
 
-==== Funktionen ohne Rückgabewert ====
+#### Funktionen ohne Rückgabewert
+In ihrer einfachsten Form erledigen Funktionen ihre Aufgaben (z.B. Zeichnen) und geben kein Ergebnis zurück. Bisher haben wir nur diese Art von Funktionen kennengelernt. Bei ihnen steht an Stelle der Rückgabewertes das Schlüsselwort *void*.
 
-In ihrer einfachsten Form erledigen Funktionen ihre Aufgaben (z.B. Zeichnen) und geben kein Ergebnis zurück. Bisher haben wir nur diese Art von Funktionen kennengelernt. Bei ihnen steht an Stelle der Rückgabewertes das Schlüsselwort //void//.
-
-[code|processing]
+```processing
 void setup() {
 }
 
@@ -71,13 +69,12 @@ void draw() {
 void zeichneEllipse() {
   ellipse(50, 50, 50, 50);
 }
-[/code]
+```
 
-==== Parameter ====
+#### Parameter
+Um die auszuführende Aufgaben (hier das Zeichnen einer [[lesson:9#ellipse|Ellipse]]) flexibler zu definieren, sodass beim Aufruf z.B. angegeben werden kann wo, oder in welcher Größe die Ellipse gezeichnet werden soll, kann man sich beliebig vieler *Parameter* bedienen. Jede bekannte Variable kann ein Parameter sein. Die Parameter einer Funktion werden, durch Kommata getrennt, in den runden Klammern notiert.
 
-Um die auszuführende Aufgaben (hier das Zeichnen einer [[lesson:9#ellipse|Ellipse]]) flexibler zu definieren, sodass beim Aufruf z.B. angegeben werden kann wo, oder in welcher Größe die Ellipse gezeichnet werden soll, kann man sich beliebig vieler //Parameter// bedienen. Jede bekannte Variable kann ein Parameter sein. Die Parameter einer Funktion werden, durch Kommata getrennt, in den runden Klammern notiert.
-
-[code|processing]
+```processing
 void setup() {
 }
 
@@ -91,14 +88,13 @@ void draw() {
 void zeichneEllipse(float x, float y) {
   ellipse(x, y, 50, 50);
 }
-[/code]
+```
 
-==== Rückgabewerte ====
+#### Rückgabewerte
+Abseits von Aufgaben, wie dem Zeichnen von zusammengesetzten Formen, die keine Ergebnisse für den weiteren Ablauf der Software erzeugen, gibt es oftmals Fälle in denen man ein Ergebnis von einer Funktion zurück erwartet (bspw. die kompliziertere Berechnung von Positionen oder Flächen uvm.). Die Art des erwarteten Ergebnisses wird durch den Rückgabewert bei der Definition der Funktion definiert. Statt *void* also z.B. //int, float, String, â€¦//.\\ 
+Innerhalb der Funktion wird dann das Ergebnis nach Abschluss aller nötigen Schritte mit dem Schlüsselwort *return* zurück zu geben.
 
-Abseits von Aufgaben, wie dem Zeichnen von zusammengesetzten Formen, die keine Ergebnisse für den weiteren Ablauf der Software erzeugen, gibt es oftmals Fälle in denen man ein Ergebnis von einer Funktion zurück erwartet (bspw. die kompliziertere Berechnung von Positionen oder Flächen uvm.). Die Art des erwarteten Ergebnisses wird durch den Rückgabewert bei der Definition der Funktion definiert. Statt //void// also z.B. //int, float, String, â€¦//.\\ 
-Innerhalb der Funktion wird dann das Ergebnis nach Abschluss aller nötigen Schritte mit dem Schlüsselwort //return// zurück zu geben.
-
-[code|processing]
+```processing
 void setup() {
   background(255);
   fill(0);
@@ -117,17 +113,15 @@ float entfernungZumMittelpunkt(float x, float y) {
   // gebe das ergbenis zurück
   return d;
 }
-[/code]
+```
 
-=== Anwendungsbeispiele ===
-
-====== Beispiel »Kreuze machen« ======
-
+### Anwendungsbeispiele
+###### Beispiel »Kreuze machen«
 Exemplarisch dient uns als Ausgangspunkt eine Komposition bestehend aus drei auf der Zeichenfläche angeordneten X'en. Sie unterscheiden sich durch Position, Farbgebung und Strichstärke. Der Aufbau, die Proportion und Lage der beiden Linien zueinander, verhält sich bei allen X'en gleich.
 **Original Sketch**
 [[image:44|right]]
 
-[code|processing]
+```processing
 void setup () {
   size (320, 240);
   background (0);
@@ -154,14 +148,13 @@ void draw () {
   line (50, 140, 110, 200);
   line (110, 140, 50, 200);
 }
-[/code]
+```
 
-==== Modulare Version ====
-
-Alle veränderbaren Eigenschaften müssen im Funktionskonstrukt variable formuliert werden. Der Inhalt des Funktionsblocks (zwischen den geschweiften Klammern ''{â€¦}'') dient zum Verfassen des Regelwerks. Die wechselnden Charakteristika werden mit Parametern belegt. Bis auf den Grauton der Strichstärke sind alle Angaben mit dem [[lesson:35|Datentyp]] //float// beschreibbar. Die Namen der im Kopf der Funktion erzeugten Variablen (Parameter) beginnen alle mit dem Wort ''the'', gefolgt von einem Großbuchstaben. Dabei handelt es sich nicht um eine durch Processing vorgegebene Notwendigkeit. Vielmehr soll dadurch die Zugehörigkeit der Variable ersichtlich sein. Alle mit diesem Begriff beginnenden Variablen sind Parameter einer Funktion, wurden nicht in der Funktion erzeugt bzw. sind nicht global verfügbar.\\ 
+#### Modulare Version
+Alle veränderbaren Eigenschaften müssen im Funktionskonstrukt variable formuliert werden. Der Inhalt des Funktionsblocks (zwischen den geschweiften Klammern ''{â€¦}'') dient zum Verfassen des Regelwerks. Die wechselnden Charakteristika werden mit Parametern belegt. Bis auf den Grauton der Strichstärke sind alle Angaben mit dem [[lesson:35|Datentyp]] *float* beschreibbar. Die Namen der im Kopf der Funktion erzeugten Variablen (Parameter) beginnen alle mit dem Wort ''the'', gefolgt von einem Großbuchstaben. Dabei handelt es sich nicht um eine durch Processing vorgegebene Notwendigkeit. Vielmehr soll dadurch die Zugehörigkeit der Variable ersichtlich sein. Alle mit diesem Begriff beginnenden Variablen sind Parameter einer Funktion, wurden nicht in der Funktion erzeugt bzw. sind nicht global verfügbar.\\ 
 Mittels dieser Variablen werden im Funktionskörper die notwendigen Zeichenprozesse formuliert. Da der Inhalt der Variablen die unterschiedlichsten Werte enthalten kann, erzielt man durch variable Aufrufe der Funktion verschiedenartige Xe.
 
-[code|processing]
+```processing
 void setup () {
   size (320, 240);
   background (0);
@@ -181,15 +174,14 @@ void drawCross (float theX, float theY, float theSize, int theGrey, float theWei
   line (theX, theY, theX+theSize, theY+theSize);
   line (theX+theSize, theY, theX, theY+theSize);  
 }
-[/code]
+```
 
-==== for-Kombination 1 ====
-
+#### for-Kombination 1
 [[image:45|right]]
-Nach dem 'manuellen' Aufruf folgt nun das Verpacken der Zeichenanweisung in einer //[[lesson:11#for_schleife|for]]//-Schleife. Genau 20 mal aufgerufen werden die Xe übereinander und leicht nach rechts gezeichnet. Neben der Position ändern sich alle weiteren Parameter durch das Einbeziehen der Zählvariable ''i''.\\ 
+Nach dem 'manuellen' Aufruf folgt nun das Verpacken der Zeichenanweisung in einer *[[lesson:11#for_schleife|for]]*-Schleife. Genau 20 mal aufgerufen werden die Xe übereinander und leicht nach rechts gezeichnet. Neben der Position ändern sich alle weiteren Parameter durch das Einbeziehen der Zählvariable ''i''.\\ 
 Die Funktionsdefinition und deren Aufruf wurden aus Gründen der Lesbarkeit umgebrochen. Bei einer großen Anzahl von Parametern bzw. bei Berechnungen innerhalb des Aufrufes kann dies von Vorteil sein.
 
-[code|processing]
+```processing
 void setup () {
   size (320, 240);
   background (0);
@@ -214,14 +206,13 @@ void drawCross (float theX, float theY, float theSize,
   line (theX, theY, theX+theSize, theY+theSize);
   line (theX+theSize, theY, theX, theY+theSize);  
 }
-[/code]
+```
 
-==== for-Kombination 2 ====
-
+#### for-Kombination 2
 [[image:46|center]]
 [[lesson:11|Schleifenkombination]] zwei lässt alle möglichen Parameter der Funktion drawCross() zufällig variieren. Jeder Aufruf erzeugt eine andere Anordnung von 70 Kreuzen, welche sich durch Position, Größe, Stärke und Farbgebung unterscheiden. Da die Graustufe der Strichfarbe eine Ganzzahl (integer) ist, muss der durch [[lesson:13|random()]] generierte Wert mittels int() konvertiert werden. Anderenfalls erhält man beim Ausführen einen Fehler für unlautere Reihenfolge der Datentypen beim Funktionsaufruf.
 
-[code|processing]
+```processing
 void setup () {
   size (320, 240);
   background (0);
@@ -245,4 +236,4 @@ void drawCross (float theX, float theY, float theSize, int theGrey, float theWei
   line (theX, theY, theX+theSize, theY+theSize);
   line (theX+theSize, theY, theX, theY+theSize);  
 }
-[/code]
+```

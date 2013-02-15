@@ -7,51 +7,48 @@
 
 Bisher haben wir in Processing lediglich die Möglichkeit kennengelernt, einfache [[lesson:9#visuelle_grundelemente|geometrisch Grundformen]] in der Sketch anhand der aufgerufenen Methoden zu positionieren. Auch bei [[lesson:15|Bildern]] und [[lesson:16|Texten]] funktionierte das nur nach diesem Prinzip:
 
-[code|processing]
+```processing
 // zeichne ein Rechteck an der Position x, y
 rect(x, y, breite, höhe);
 // zeichne ein Bild an der Position x, y
 image(img, x, y);
 // zeichne Text an der Position x, y
 text("Creative Coding", x, y);
-[/code]
+```
 
 {{/files/documents/b09_00.png}}
 Die Möglichkeiten bei der Positionierung visueller Elemente sind jedoch schnell erschöpft. So gibt es bisher z.B. keine Funktion mehrere, gezeichnete Elemente gleichzeitig zu verschieben, zu drehen oder gar zu skalieren. Im folgenden Kapitel dreht sich deshalb alles um die Funktionen translate(), rotate() und scale(). Diese Funktionen werden unter dem Begriff "Transformation" zusammengefasst. Eine Transformation eines graphischen Elements beschreibt demzufolge seine Verschiebung, Drehung und Skalierung im Raum.
 
-=== Verschieben ===
-
+### Verschieben
 {{/files/documents/b09_01_translate.png}}
 Der wichtigste Bestandteil einer Transformation ist das Versetzen des Ursprungs von dem aus das Element gezeichnet wird. Das kann über den Befehl translate erreicht werden:
-  * **translate()** verschiebt das gesamte Koordinatensystem der Zeichenfläche um die Parameterangaben von //x// und //y//. [[processing-reference:translate()]][code|processing]
+  * **translate()** verschiebt das gesamte Koordinatensystem der Zeichenfläche um die Parameterangaben von *x* und *y*. [[processing-reference:translate()]]```processing
 float x = 41;
 float y = 95;
 translate (x, y);
-[/code]
+```
 
-translate() verschiebt dabei nicht nur den Ursprung des nachfolgenden Objekts, sondern den Ursprung **aller** Objekte, die nachfolgend gezeichnet werden. Diese Funktionsweise ist u.a. einer der Vorteile von translate(), da gezielt Gruppen von graphischen Elementen verschoben werden können. Nach dem Aufruf von translate() verschiebt sich also das gesamte zu Grunde liegende Koordinatensystem. Durch die Parameter von translate() wird die zukünftige //x//- und //y//-Position des Koordinatenursprungs angegeben.
+translate() verschiebt dabei nicht nur den Ursprung des nachfolgenden Objekts, sondern den Ursprung **aller** Objekte, die nachfolgend gezeichnet werden. Diese Funktionsweise ist u.a. einer der Vorteile von translate(), da gezielt Gruppen von graphischen Elementen verschoben werden können. Nach dem Aufruf von translate() verschiebt sich also das gesamte zu Grunde liegende Koordinatensystem. Durch die Parameter von translate() wird die zukünftige *x*- und *y*-Position des Koordinatenursprungs angegeben.
 
-=== Rotieren ===
-
+### Rotieren
 {{/files/documents/b09_02_rotate.png}}
 Über rotate() können alle gezeichneten Element gedreht werden. Dabei werden Elemente nicht um den Punkt gedreht an dem sie gezeichnet werden, sondern um den **Ursprung** von dem aus sie gezeichnet werden. Das heisst, dass der einfache Aufruf von rotate() das gesamte Koordinatensystem der Sketch rotiert. Der einzige Parameter von rotate() gibt den Grad der Drehung im [[http://de.wikipedia.org/wiki/Bogenmass|Bogenmaß]] an, wobei 2 PI einer vollen Drehung entsprechen. Um zwischen Bogenmaß und Gradmaß umzurechnen stellt Processing die Funktionen radians() und degrees() zu Verfügung.
-  * **rotate()** dreht das gesamte Koordinatensystem um seinen Ursprung (x:0, y:0) nach dem im Bogenmaß gegebenen Winkel. Eine Drehung von 360 Grad entsprechen dabei 2 PI (6.2831855...). Processing bietet neben dem Ausdruck PI weiterhin HALF_PI und TWO_PI. [[processing-reference:rotate()]][code|processing]
+  * **rotate()** dreht das gesamte Koordinatensystem um seinen Ursprung (x:0, y:0) nach dem im Bogenmaß gegebenen Winkel. Eine Drehung von 360 Grad entsprechen dabei 2 PI (6.2831855...). Processing bietet neben dem Ausdruck PI weiterhin HALF_PI und TWO_PI. [[processing-reference:rotate()]]```processing
 rotate (1.349);
-[/code]
-  * **radians()** gibt das Bogenmaß für einen Winkel in Grad zurück. [[processing-reference:radians()]][code|processing]
+```
+  * **radians()** gibt das Bogenmaß für einen Winkel in Grad zurück. [[processing-reference:radians()]]```processing
 // 'rad' = Radiant für 45 Grad
 float rad = radians (45);
-[/code]
-  * **degrees()** stellt das Gegenteil von radians() dar - wandelt eine Winkelangabe vom Bogenmaß in Grad. [[processing-reference:degrees()]][code|processing]
+```
+  * **degrees()** stellt das Gegenteil von radians() dar - wandelt eine Winkelangabe vom Bogenmaß in Grad. [[processing-reference:degrees()]]```processing
 // 'deg' = Grad für PIviertel
 float deg = degrees (PI / 4);
-[/code]
+```
 
-====== Bsp.: Rotieren von Elementen ======
-
+###### Bsp.: Rotieren von Elementen
 Es werden drei Dreiecke vom relativ nach unten-links verschobenen Sketchursprung (x:0, y:0) aus gezeichnet. Zwischen allen Dreiecken drehen wir die gesamte Zeichenfläche um den Wert von Winkel (genau zwei mal). Da der Winkel bei rotate() mit einem Minus übergeben wird, rotieren wir gegen den Uhrzeigersinn.
 
-[code|processing]
+```processing
 void setup () {
   // Sketchgröße definieren
   size(500, 230);
@@ -89,18 +86,16 @@ void draw () {
   fill (0, 125, 255);
   triangle (0, 40, 300, 0, 0, -40);
 }
-[/code]
+```
 
-==== Rotieren um den relativen Mittelpunkt ====
-
+#### Rotieren um den relativen Mittelpunkt
 Dadurch dass alle Elemente um den Koordinatenursprung gedreht werden, muss man vor dem Rotieren mittels translate() den Koordinatenursprung auf den gewünschten Mittelpunkt verschieben, um ein Objekt um die eigene Achse zu drehen.
 
-====== Bsp.: Rotation um das Zentrum der Zeichenfläche ======
-
-Schritt eins besteht aus dem Ã„ndern des Zeichenmodus für alle mit rect() gezeichneten Elemente. Wir setzen diesen auf CENTER - nun wir vom Zentrum aus gezeichnet, nicht von der oberen linken Ecke. Im zweiten Schritt setzen wir den Ursprung unseres Koordinatensystems mit translate() auf die Mitte der Zeichenfläche. Die sichtbare Fläche der //x//-Achse geht nun von -250 bis +250; vorher wurde uns der Bereich von 0 bis +500 dargestellt (Selbiges wird für die //y//-Achse durchgeführt). Wenn wir nun ein Quadrat an der Position x:0, y:0 zeichnen liegt dieses genau in der Mitte des Sketchfensters.\\ 
+###### Bsp.: Rotation um das Zentrum der Zeichenfläche
+Schritt eins besteht aus dem Ã„ndern des Zeichenmodus für alle mit rect() gezeichneten Elemente. Wir setzen diesen auf CENTER - nun wir vom Zentrum aus gezeichnet, nicht von der oberen linken Ecke. Im zweiten Schritt setzen wir den Ursprung unseres Koordinatensystems mit translate() auf die Mitte der Zeichenfläche. Die sichtbare Fläche der *x*-Achse geht nun von -250 bis +250; vorher wurde uns der Bereich von 0 bis +500 dargestellt (Selbiges wird für die *y*-Achse durchgeführt). Wenn wir nun ein Quadrat an der Position x:0, y:0 zeichnen liegt dieses genau in der Mitte des Sketchfensters.\\ 
 Mit diesen Voraussetzungen können wir beginnen den Teil der Abbildung zu verfassen. In einer Schleife positionieren wir jeweils zwei Quadrate (unterschiedlicher Größe) an x:0, y:0 und generieren jeweils einen Farbwert. Am Ende des draw() Blocks erhöhen wird den Winkel um im nächsten Bild eine weitere Verschiebung zu erhalten. Da eine ganze Umdrehung durch zwei PI (TWO_PI) repräsentiert wird, setzen wir ''winkel'' auf 0 zurück.
 
-[code|processing]
+```processing
 // Anzahl der Quadratpaare
 int anzahl = 10;
 // aktueller Winkel
@@ -142,13 +137,12 @@ void draw () {
   // Winkel erhöhen
   winkel = winkel + 0.004;
 }
-[/code]
+```
 
-====== Bsp.: Rotieren um die X, Y & Z-Achse ======
+###### Bsp.: Rotieren um die X, Y & Z-Achse
+Bisher haben wir Elemente im kartesischen Koordinatensystem immer auf zwei Achsen positioniert: der horizontalen *x*-Achse und der vertikalen *y*-Achse. In der dritten Dimension kommt die Z-Achse hinzu, auf der wir Objekte quasi zu uns hin- und wegbewegen können. Im folgenden Beispiel wird eine Linie um die *z*-Achse rotiert, wodurch man einen räumlichen Effekt erhält. Sobald man die *z*-Achse mit einbezieht, muss dem size(weite, höhe) Befehl neben der Weite und Höhe ein dritter Parameter namens **OPENGL** oder **P3D** hinzugefügt werden werden. Dieser bezeichnet einen extra Rendermodus den Processing für die 3D Darstellung benötigt. **OPENGL** muss über die Zeile ''import processing.opengl.*;'' importiert werden, bei P3D ist dies nicht nötig.
 
-Bisher haben wir Elemente im kartesischen Koordinatensystem immer auf zwei Achsen positioniert: der horizontalen //x//-Achse und der vertikalen //y//-Achse. In der dritten Dimension kommt die Z-Achse hinzu, auf der wir Objekte quasi zu uns hin- und wegbewegen können. Im folgenden Beispiel wird eine Linie um die //z//-Achse rotiert, wodurch man einen räumlichen Effekt erhält. Sobald man die //z//-Achse mit einbezieht, muss dem size(weite, höhe) Befehl neben der Weite und Höhe ein dritter Parameter namens **OPENGL** oder **P3D** hinzugefügt werden werden. Dieser bezeichnet einen extra Rendermodus den Processing für die 3D Darstellung benötigt. **OPENGL** muss über die Zeile ''import processing.opengl.*;'' importiert werden, bei P3D ist dies nicht nötig.
-
-[code|processing]
+```processing
 float winkel=0;
 void setup(){
 
@@ -185,15 +179,14 @@ void draw(){
     line(0, 22+winkel*3,-2, 22+winkel*3);
   }
 }
-[/code]
+```
 
-==== Winkelberechnung zwischen zwei Punkten ====
-
+#### Winkelberechnung zwischen zwei Punkten
 Um den Winkel zwischen zwei Punkten zu berechnen, stellt Processing die Funktion zur Verfügung:
   * **atan2()** [[processing-reference:atan2()]]
 Diese Funktion berechnet den Winkel eines Punktes (x, y) ausgehend vom Koordinatenursprung im Bereich von -PI bis PI. Um also den Winkel zwischen zwei Punkten zu berechnen, muss vor der Verwendung von atan2() der Koordinatenursprung mit translate() verschoben werden.
 
-[code|processing]
+```processing
 // globales Bildobjekt
 PImage boid;
 
@@ -228,21 +221,19 @@ void draw () {
   // Bild darstellen
   image (boid, 0, 0);
 }
-[/code]
+```
 
-=== Skalieren ===
-
+### Skalieren
 {{/files/documents/b09_03_scale.png}}
 Genau wie translate() und rotate() wirkt sich scale() auf das gesamte Koordinatensystem aus.
-  * **scale()** [[processing-reference:scale()]][code|processing]
+  * **scale()** [[processing-reference:scale()]]```processing
 scale (3.7);
-[/code]
+```
 Wie der Name vermuten lässt, wird dabei das Koordinatensystem skaliert, also vergrößert oder verkleinert. 
 
-==== Lösen der Zeichenfläche ====
-
+#### Lösen der Zeichenfläche
 Da sich alle Funktionen für die Transformation immer auf das gesamte Koordinatensystem auswirken, gibt es in Processing die Möglichkeit mehrere Korrdinatensysteme von einander abzugrenzen, und so einzelne Transformation unabhängig voneinander anzuwenden. Die beiden Funktionen die dazu nötig heissen:
-  * **pushMatrix()** erzeugt eine neue Ebene in der Zeichfläche. Diese übernimmt alle aktuellen Eigenschaften (wie Position und Rotation) vom Hintergrund. [[processing-reference:pushMatrix()]][code|processing]
+  * **pushMatrix()** erzeugt eine neue Ebene in der Zeichfläche. Diese übernimmt alle aktuellen Eigenschaften (wie Position und Rotation) vom Hintergrund. [[processing-reference:pushMatrix()]]```processing
 // erzeugt eine neue Ebene
 pushMatrix();
 // verschiebt das Koordinatensystem 
@@ -250,9 +241,9 @@ pushMatrix();
 translate (90, 0);
 // zeichnet ein Rechteck an x:90, y:0
 rect (0, 0, 40, 40);
-[/code]
+```
 
-  * **popMatrix()** verbindet die mit pushMatrix() generierte Ebene (bzw. deren Inhalt) mit dem Hintergrund. Nach dem Aufruf von popMatrix() gelten die gleichen Bedingungen für Position und Rotation der Zeichenfläche wie vor dem Aufruf von pushMatrix(). [[processing-reference:popMatrix()]][code|processing]
+  * **popMatrix()** verbindet die mit pushMatrix() generierte Ebene (bzw. deren Inhalt) mit dem Hintergrund. Nach dem Aufruf von popMatrix() gelten die gleichen Bedingungen für Position und Rotation der Zeichenfläche wie vor dem Aufruf von pushMatrix(). [[processing-reference:popMatrix()]]```processing
 // zeichnet ein Quadrat an x:0, y:0
 rect (0, 0, 40, 40);
 
@@ -268,15 +259,14 @@ popMatrix ();
 
 // zeichnet ein Quadrat an x:0, y:70
 rect (0, 70, 40, 40);
-[/code]
+```
 
-Mithilfe dieser beiden Funktionen können Koordinatensysteme ([[http://de.wikipedia.org/wiki/Matrix_(Mathematik)|Matrizen]]) der Reihe nach gespeichert (//push//) und wieder abgerufen werden (//pop//). Dieses Konzept wird auch als //Stack (Stapel)// bezeichnet. Die Wirkungsweise von Stacks ist in ungefähr mit Ebenen in Bildbearbeitungsprogrammen (z.B. Adobe Photoshop) vergleichbar. pushMatrix() und popMatrix() grenzen also in Processing "Ebenen" ab, von denen jede ihren eigenen Ursprung, eine Ursprungsrotation und eine Skalierung hat, die mit den in dieser Lesson vorgestellten Funktionen definiert werden können (aber nicht müssen!)
+Mithilfe dieser beiden Funktionen können Koordinatensysteme ([[http://de.wikipedia.org/wiki/Matrix_(Mathematik)|Matrizen]]) der Reihe nach gespeichert (*push*) und wieder abgerufen werden (*pop*). Dieses Konzept wird auch als //Stack (Stapel)// bezeichnet. Die Wirkungsweise von Stacks ist in ungefähr mit Ebenen in Bildbearbeitungsprogrammen (z.B. Adobe Photoshop) vergleichbar. pushMatrix() und popMatrix() grenzen also in Processing "Ebenen" ab, von denen jede ihren eigenen Ursprung, eine Ursprungsrotation und eine Skalierung hat, die mit den in dieser Lesson vorgestellten Funktionen definiert werden können (aber nicht müssen!)
 
-====== Bsp.: Ebenen 1 ======
-
+###### Bsp.: Ebenen 1
 In diesem Beispiel erzeugen wir nacheinander vier Ebenen. Gleichmäßig auf der Zeichenfläche verteilt und einheitlich rotiert werden sie jeweils, nach dem Zeichprozess, mit dem Hintergrund verbunden. Dabei verwenden wir wieder rectMode(CENTER); um die Quadrate um ihren Mittelpunkt (nicht die obere-linke Ecke) zu drehen. Da wir mit pushMatrix() und popMatrix() arbeiten, werden die Befehle zum Verschieben und Drehen immer auf den ursprünglichen Zustand des Koordinatensystems angewendet. Soll bedeuten - nach dem Aufruf von popMatrix() befindet sich der Ursprung der Sketchfläche wieder bei x:0, y:0 und ist nicht gedreht.
 
-[code|processing]
+```processing
 void setup () {
   // Sketchgröße definieren
   size(500, 140);
@@ -327,14 +317,13 @@ void draw () {
   rect (0, 0, 60, 60);
   popMatrix ();
 }
-[/code]
+```
 
-====== Bsp.: Ebenen 2 ======
-
-Eine Erweiterung von //Beispiel 1// stellt dieses Script dar. Zwei globale Variable (''anzahl'' und ''rand'') dienen zur Kontrolle des produzierten Ergebnisses und können nach Belieben modifiziert werden. Im [[lesson:10#vorbereitung_fortlaufende_programme|draw()]] Block werden für die Zustandsänderung zwischen den Quadraten die Schritte bei der //x//-Verschiebung und Winkeländerung berechnet und in ''xstep'' und ''astep'' abgelegt. Mittels einer //[[lesson:11#for_schleife|for]]//-Schleife wird der schon in //Beispiel 1// formulierte Zeichenablauf für jedes [[lesson:9#rechteck|Quadrat]] aufgerufen. Die Zählvariable ''i'' steuert dabei den Umfang der Verschiebung auf der //x//-Achse und der Rotation um das Zentrum der Elemente. Weiterhin wird die [[lesson:9#farben|Füllfarbe]] in jedem Durchlauf definiert - wir erhalten einen groben Farbverlauf.\\ 
+###### Bsp.: Ebenen 2
+Eine Erweiterung von //Beispiel 1// stellt dieses Script dar. Zwei globale Variable (''anzahl'' und ''rand'') dienen zur Kontrolle des produzierten Ergebnisses und können nach Belieben modifiziert werden. Im [[lesson:10#vorbereitung_fortlaufende_programme|draw()]] Block werden für die Zustandsänderung zwischen den Quadraten die Schritte bei der *x*-Verschiebung und Winkeländerung berechnet und in ''xstep'' und ''astep'' abgelegt. Mittels einer *[[lesson:11#for_schleife|for]]*-Schleife wird der schon in //Beispiel 1// formulierte Zeichenablauf für jedes [[lesson:9#rechteck|Quadrat]] aufgerufen. Die Zählvariable ''i'' steuert dabei den Umfang der Verschiebung auf der *x*-Achse und der Rotation um das Zentrum der Elemente. Weiterhin wird die [[lesson:9#farben|Füllfarbe]] in jedem Durchlauf definiert - wir erhalten einen groben Farbverlauf.\\ 
 Dieses Beispiel demonstriert auf anschauliche Weise die "Macht" von [[lesson:11|Schleifen]]. Mit deutlich weniger Aufwand erhalten wir ein komplexere Komposition.
 
-[code|processing]
+```processing
 // Menge der Quadrate
 int anzahl = 80;
 // Randbreite auf der x-Achse
@@ -375,13 +364,12 @@ void draw () {
     popMatrix ();
   }
 }
-[/code]
+```
 
-=== Relative Positionierung ===
-
+### Relative Positionierung
 Größenverhältnisse und Positionen können auf Basis eines Faktors (Zoomstufe) in Verhältnisse gesetzt werden. Das Resultat ist eine Verkleiner- bzw. Vergrößerung eines existierenden Systems.\\ 
 Im Beispiel zeichnen wir ein [[lesson:9#rechteck|Rechteck]] an die Position ''x'':80, ''y'':60 mit der Größe ''w'':100, ''h'':45. Die Position der [[lesson:10#mausposition|Maus]] im Sketch wird auf die Lage eines [[lesson:9#kreis|Kreises]] im von uns gezeichneten Rechteck übertragen. Wenn sich der Cursor im Fenster oben-links befindet, ist der Kreis ebenfalls in der oberen linken Ecke des Vierecks positioniert. In allen Fällen wir die Kreisposition relativ zur Mausposition im Programmfenster berechnet. Die Größenverhältnisse beider Flächen müssen nicht übereinstimmen.
-[code|processing]
+```processing
 float boxWidth  = 80;  // Ausschnittbreite
 float boxHeight = 60;  // Ausschnitthöhe
 float boxX      = 100; // Ausschnitt x-Position
@@ -409,4 +397,4 @@ void draw () {
   noStroke ();
   ellipse (x, y, 14, 14);
 }
-[/code]
+```

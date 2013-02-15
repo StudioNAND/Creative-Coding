@@ -5,10 +5,9 @@
 
 ---
 
-=== Vertex ===
-
+### Vertex
 Bereits aus Grafikprogrammen wie Photoshop und Illustrator ist uns das Zeichnen von Pfaden bekannt. Durch das Aneinanderreihen von Punkten legt man eine Abfolge von Linien fest, welche als Außenhaut der Form fungieren. In Processing werden diese Punkte durch den Aufruf von vertex() erzeugt. Begonnen und beendet wird das Zeichnen mit beginShape() und endShape():
-  * **beginShape()** der Aufruf leitet das Zeichnen einer Freiform ein. Parameter benötigt dieser Befehlt nicht. Durch die Angabe von //POINTS//, //LINES//, //TRIANGLES//, //TRIANGLE_FAN//, //TRIANGLE_STRIP//, //QUADS// und //QUAD_STRIP// kann die resultierende Form eingeschränkt werden (keine vollwertige Freiform mehr). [[processing-reference:beginShape()]][code|processing]
+  * **beginShape()** der Aufruf leitet das Zeichnen einer Freiform ein. Parameter benötigt dieser Befehlt nicht. Durch die Angabe von *POINTS*, *LINES*, *TRIANGLES*, *TRIANGLE_FAN*, *TRIANGLE_STRIP*, *QUADS* und *QUAD_STRIP* kann die resultierende Form eingeschränkt werden (keine vollwertige Freiform mehr). [[processing-reference:beginShape()]]```processing
 // beginne eine Freiform
 beginShape ();
 
@@ -20,30 +19,29 @@ beginShape (POINTS);
 // die resultierende Fläche aber nicht
 // zu f&uuml;llen
 beginShape (LINES);
-[/code]
-  * **endShape()** der Aufruf beendet das Zeichnen der Freiform. Diese setzt sich aus allen zwischen beginShape() und endShape() ausgeführten Zeichenbefehlen (z.B. vertex()) zusammen. Wenn bei beginShape() ein Parameter verwendet wurde, sollte dieser hier ebenfalls angegeben werden. [[processing-reference:endShape()]][code|processing]
+```
+  * **endShape()** der Aufruf beendet das Zeichnen der Freiform. Diese setzt sich aus allen zwischen beginShape() und endShape() ausgeführten Zeichenbefehlen (z.B. vertex()) zusammen. Wenn bei beginShape() ein Parameter verwendet wurde, sollte dieser hier ebenfalls angegeben werden. [[processing-reference:endShape()]]```processing
 // beendet das zeichnen einer Freiform
 endShape ();
-[/code]
-  * **vertex()** erweitert den formbeschreibenden Pfad um einen neuen Ankerpunkt. Da wir uns in einer zweidimensionalen Zeichenfläche bewegen geben wir die Position durch //x// und //y// Koordinate an. [[processing-reference:vertex()]][code|processing]
+```
+  * **vertex()** erweitert den formbeschreibenden Pfad um einen neuen Ankerpunkt. Da wir uns in einer zweidimensionalen Zeichenfläche bewegen geben wir die Position durch *x* und *y* Koordinate an. [[processing-reference:vertex()]]```processing
 // vertex (x-koordinate, y-koordinate);
 vertex (30, 40);
 vertex (90, 20);
 vertex (60, 70);
 ...
-[/code]
+```
 
 Processing teilt den Ablauf des Zeichnens von Freiformen demnach in drei Schritte:
-  - **Einleiten:** Mittels beginShape() teilen dem Programm mit, das wir gleich eine Form zeichnen werden. Alle nun folgenden Punkte sollen zu einer Form bzw. Umrandung, abhänig vom angewendeten Modus, zusammengeführt werden. Modi wie //TRIANGLE_FAN//, //TRIANGLE_STRIP//, etc. stellen zu Beginn große Fehlerquellen dar. Jegliche Form kann auch ohne Angabe solcher Parameter erzeugt werden.
+  - **Einleiten:** Mittels beginShape() teilen dem Programm mit, das wir gleich eine Form zeichnen werden. Alle nun folgenden Punkte sollen zu einer Form bzw. Umrandung, abhänig vom angewendeten Modus, zusammengeführt werden. Modi wie *TRIANGLE_FAN*, *TRIANGLE_STRIP*, etc. stellen zu Beginn große Fehlerquellen dar. Jegliche Form kann auch ohne Angabe solcher Parameter erzeugt werden.
   - **Zeichnen:** In diesem Teil folgt die Formulierung der Freiform. Dies geschieht durch die Angabe der Ankerpunkte - Gestaltung der Outline. In diesem Abschnitt dürfen keine Aufrufe der bisherigen [[lesson:9#visuelle_grundelemente|Zeichenbefehle]] erfolgen! Erst nach dem Schließen der Form können [[lesson:9#ellipse|ellipse()]], [[lesson:9#rechteck|rect()]] wieder zur Verwendung kommen.
   - **Beenden:** Processing bekommt nun durch [[processing-reference:endShape()]] die Anweisung mit allen, seit beginShape() angegebenen Punkten, eine Umriss zu generieren. Je nach vorheriger Angabe von fill() und stroke() ist dieser gefüllt bzw. sichtbar. Der Einsatz von ellipse(), rect(), etc. ist nun wieder gestattet.
 
-====== Bsp.: Freiform 1 ======
-
+###### Bsp.: Freiform 1
 In diesem Beispiel wird eine durch fünf Punkte beschriebene Form gezeichnet. Sie ist axial symmetrisch zur y-Achse (Spiegelachse befindet sich auf y=100, die Hälfte der Zeichenfläche) und weiß gefüllt.
 Rechts, neben dem gerenderten Ergebnis, ist eine Grafik, welche die Lage der formbeschreibenden Punkte verdeutlicht. Wir beginnen oben-links mit dem Punkt (20, 40) und arbeiten uns Schritt für Schritt an der Outline entlang. Jeder Punkt wird dabei durch den Aufruf von vertex(x,y) definiert. 
 
-[code|processing]
+```processing
 // Größe der Zeichenfläche festlegen
 size(220, 220);
 // Kantenglättung aktivieren
@@ -60,14 +58,13 @@ vertex (160, 150);
 vertex (200, 40);
 // Zeichnen beenden
 endShape ();
-[/code]
+```
 
-====== Bsp.: Freiform 2 ======
+###### Bsp.: Freiform 2
+Mit dem im Vorherigen angesprochenen Parameter des beginShape() Befehls legt man die Art der Verbindungen zwischen den Vertexpunkten für den gesamten Zeichenprozess fest. Wenn die Initialisierung mit beginShape(LINES) durchgeführt wurde, werden immer zwei aufeinander folgende Punkte zu einer Linie verbunden. *TRIANGLES* erzeugt aus drei Punkten ein Dreieck - ignoriert jedoch in unserem Beispiel den vierten Punkt; *QUADS* generiert ein geschlossenen Viereck.
+Alle oben abgebildeten Beispiele wurden auf Basis des unteren Scripts erstellt. Lediglich der Zeichenmodi (im Beispiel *LINES*) wurde ausgetauscht.
 
-Mit dem im Vorherigen angesprochenen Parameter des beginShape() Befehls legt man die Art der Verbindungen zwischen den Vertexpunkten für den gesamten Zeichenprozess fest. Wenn die Initialisierung mit beginShape(LINES) durchgeführt wurde, werden immer zwei aufeinander folgende Punkte zu einer Linie verbunden. //TRIANGLES// erzeugt aus drei Punkten ein Dreieck - ignoriert jedoch in unserem Beispiel den vierten Punkt; //QUADS// generiert ein geschlossenen Viereck.
-Alle oben abgebildeten Beispiele wurden auf Basis des unteren Scripts erstellt. Lediglich der Zeichenmodi (im Beispiel //LINES//) wurde ausgetauscht.
-
-[code|processing]
+```processing
 // Kantenglättung aktivieren
 smooth ();
 
@@ -80,20 +77,18 @@ vertex (80, 80);  // Linie b, Punkt 1
 vertex (60, 20);  // Linie b, Punkt 2
 // Zeichnen Beenden
 endShape ();
-[/code]
+```
 
-=== Curve Vertex ===
-
+### Curve Vertex
 Kurven werden wie die oben kennengelernte Vertexoutline durch eine Reihung von Punkten bestimmt. Jedoch werden die Punkte nicht geradlinig verbunden. Beeinflusst von allen Vertexelementen bewegt sich das "Zeichenwerkzeug" von Anfangs- zu Endpunkt und hinterlässt einen weichen, nicht kantigen, Pfad. Jeder Vertexpunkt wird dabei vom Pfad geschnitten.
 Processing benötigt mindestens vier Punkte um eine Kurve abzubilden. Durch die Interpolation müssen Anfangs- und Endpunkt doppelt angegeben werden. Anderenfalls ist die Darstellung verschoben.
 
-  * **curveVertex()** definiert mit //x// und //y//-Koordinate einen Kontrollpunkt der Kurve. Mindestens vier dieser Punkte müssen zwischen beginShape() und endShape() stehen. [[processing-reference:curveVertex()]]
+  * **curveVertex()** definiert mit *x* und *y*-Koordinate einen Kontrollpunkt der Kurve. Mindestens vier dieser Punkte müssen zwischen beginShape() und endShape() stehen. [[processing-reference:curveVertex()]]
 
-====== Bsp.: Kurve ======
-
+###### Bsp.: Kurve
 Bezogen auf das Beispiel "Freiform 1" sind nun die vertex() Aufrufe durch curveVertex() ersetzt worden. Ebenfalls haben wir Start- und Endpunkt dupliziert. Wir erhalten, wie in der bekannten Version, einen Fläche - mit einer abgerundeten Outline.
 
-[code|processing]
+```processing
 // Größe der Zeichenfläche festlegen
 size(220, 220);
 // Kantenglättung aktivieren
@@ -112,13 +107,12 @@ curveVertex (200, 40);
 curveVertex (200, 40);
 // Zeichnen beenden
 endShape ();
-[/code]
+```
 
-====== Bsp.: Kurve modifizieren ======
-
+###### Bsp.: Kurve modifizieren
 Im folgenden Beispiel werden drei Punkte einer Kurve definiert. Um keine fehlerhafter Darstellung zu erhalten sind Punkt 1 (0,0) und Punkt 3 (100, 100) doppelt angegeben. Modifiziert wird der Verlauf der Kurve durch die Position der Maus im Sketchfenster. Auf Grundlage derer Koordinaten wird der mittlere Punkt gesetzt.
 
-[code|processing]
+```processing
 void setup() {
   // Kantenglättung aktivieren
   smooth ();
@@ -140,19 +134,18 @@ void draw () {
   // Zeichnen beenden
   endShape ();
 }
-[/code]
+```
 
-====== Bsp.: dynamische Pfaderzeugung ======
-
+###### Bsp.: dynamische Pfaderzeugung
 Das zweite Beispiel veranschaulicht neben der Verwendung des Befehls curveVertex() die Einbindung einer [[lesson:11#for_schleife|for]]-Schleife, sowie der [[lesson:13#random|random()]] Funktion.
 Im globalen Bereich werden zwei elementare Variablen unseres Programms festgelegt:
 
-  * ''step'' repräsentiert den Abstand zwischen den einzelnen Kurvenkontrollpunkten auf der //x//-Achse - Weg welcher von Schleifendurchgang zu Schleifendurchgang durch Multiplikation mit der Zählvariable ''i'' variiert.
-  * ''points'' steht für die Anzahl an Kontrollpunkten, welche die Kurve beschreiben. //int// da es nur eine ganze Menge an Punkten geben kann.
+  * ''step'' repräsentiert den Abstand zwischen den einzelnen Kurvenkontrollpunkten auf der *x*-Achse - Weg welcher von Schleifendurchgang zu Schleifendurchgang durch Multiplikation mit der Zählvariable ''i'' variiert.
+  * ''points'' steht für die Anzahl an Kontrollpunkten, welche die Kurve beschreiben. *int* da es nur eine ganze Menge an Punkten geben kann.
 Nach der Initialisierung im [[lesson:10#vorbereitung_fortlaufende_programme|setup()]] Block setzen wir noch den Inhalt der Variable ''step''. Dazu teilen wir die Breite der Zeichenfläche durch die Anzahl an Punkten minus eins. Wir erhalte die nötige Distanz zwischen den Kontrollpunkten für eine gleichmäßige Verteilung.
-Im draw() Block leeren wir das Sketchfenster zu Beginn. Anschließend weisen wir Processing mit dem Aufruf von beginShape() an aus alle folgenden Punkte ein grafisches Element zu erzeugen. Folgend werden die benötigten Punkte in einer //for//-Schleife generiert. Diese läuft beginnend von der linken Seite der Zeichenfläche bis zur Rechten - startet dann wieder von Neuem. Innerhalb wird jeweils die //x// und //y// Koordinate für den Punkt der aktuellen Position berechnet. Der //y//-Wert ist dabei zufällig (in den Grenzen der [[lesson:10#mausposition|Mausposition]]) beeinflusst. Um den Ersten und Letzten Punkt doppelt anzugeben gibt es für beide Fälle jeweils eine //if// Bedingung. Am Ende schließen wir das Erstellen unseres Elementes mit dem Befehl endShape() ab.
+Im draw() Block leeren wir das Sketchfenster zu Beginn. Anschließend weisen wir Processing mit dem Aufruf von beginShape() an aus alle folgenden Punkte ein grafisches Element zu erzeugen. Folgend werden die benötigten Punkte in einer *for*-Schleife generiert. Diese läuft beginnend von der linken Seite der Zeichenfläche bis zur Rechten - startet dann wieder von Neuem. Innerhalb wird jeweils die *x* und *y* Koordinate für den Punkt der aktuellen Position berechnet. Der *y*-Wert ist dabei zufällig (in den Grenzen der [[lesson:10#mausposition|Mausposition]]) beeinflusst. Um den Ersten und Letzten Punkt doppelt anzugeben gibt es für beide Fälle jeweils eine *if* Bedingung. Am Ende schließen wir das Erstellen unseres Elementes mit dem Befehl endShape() ab.
 
-[code|processing]
+```processing
 /* Lege die beiden globalen Variablen "step" und 
  * "points" fest. Sie stehen außerhalb von setup 
  * bzw. draw und sind deshalb überall im Programm 
@@ -210,4 +203,4 @@ void draw () {
   // Beende das Zeichnen der Freiform
   endShape ();
 }
-[/code]
+```

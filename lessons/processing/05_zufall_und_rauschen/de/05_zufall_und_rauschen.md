@@ -5,29 +5,27 @@
 
 ---
 
-=== random ===
-
+### random
 Für Anzahl, Farbe, Form und Position die Würfel fliegen lassen.
 
-  * **random(a)** erzeugt eine Zufallszahl zwischen 0 und //a//, wobei //a// eine rationale oder gebrochen rationale Zahl sein kann. Bei dieser Parameteranzahl legen wir demnach nur die Obergrenze des möglichen Wertebereiches fest. Die Untergrenze ist durch Processing auf 0 gesetzt.
+  * **random(a)** erzeugt eine Zufallszahl zwischen 0 und *a*, wobei *a* eine rationale oder gebrochen rationale Zahl sein kann. Bei dieser Parameteranzahl legen wir demnach nur die Obergrenze des möglichen Wertebereiches fest. Die Untergrenze ist durch Processing auf 0 gesetzt.
 
-[code|processing]
+```processing
 // z.B.: 0.8751683
 println (random (1));
-[/code]
+```
 
-  * **random(a, b)** erzeugt eine Zufallszahl zwischen //a// und //b//, wobei //a// und //b// rationale oder gebrochenrationale Zahlen seien können. Beide, Unter- und Obergrenze, werden von uns festgelegt.
+  * **random(a, b)** erzeugt eine Zufallszahl zwischen *a* und *b*, wobei *a* und *b* rationale oder gebrochenrationale Zahlen seien können. Beide, Unter- und Obergrenze, werden von uns festgelegt.
 
-[code|processing]
+```processing
 // z.B.: 3.9300842
 println (random (1, 10);
-[/code]
+```
 
-Als Ergebnis liefert uns die [[processing-reference:random()]] Funktion immer einen gebrochen rationalen Wert. Das Befüllen eines //int// mit dem Resultat ist uns demnach nicht gestattet - wir müssen den Datentyp //float// verwenden.
+Als Ergebnis liefert uns die [[processing-reference:random()]] Funktion immer einen gebrochen rationalen Wert. Das Befüllen eines *int* mit dem Resultat ist uns demnach nicht gestattet - wir müssen den Datentyp *float* verwenden.
 
-====== Bsp.: random 1 ======
-
-[code|processing]
+###### Bsp.: random 1
+```processing
 void setup () {
   size(200, 200);
 }
@@ -35,13 +33,12 @@ void setup () {
 void draw () {
   ellipse (100, 100, random (200), random (200));
 }
-[/code]
+```
 
 In jedem Einzelbild (einem [[lesson:10#vorbereitung_fortlaufende_programme|draw()]] Durchlauf) wird eine [[lesson:9#ellipse|Ellipse]] gezeichnet. Breite und Höhe werden jedes Mal zufällig bestimmt - zwischen 0 und 200 Pixel. Eine Variable zur Zwischenablage der Zufallszahlen wird dabei nicht benötigt. Das Resultat der random() Funktion wird direkt als Parameter an die ellipse() Funktion weitergereicht.
 
-====== Bsp.: random 2 ======
-
-[code|processing]
+###### Bsp.: random 2
+```processing
 void setup () {
   size(200, 200);
 }
@@ -57,13 +54,12 @@ void draw () {
   // und Höhe den Wert der Variable "durchmesser"
   ellipse (100, 100, durchmesser, durchmesser);
 }
-[/code]
+```
 
-Im zweiten Beispiel erzeugen wir gleichförmige Kreise deren Durchmesser ebenfalls zufällig ist. Dies geht nur mittels Zuhilfenahme von einer [[lesson:35#datentypen|Variable]] deren Wert bei der Breite und Höhe der Ellipse verwendet wird. Beachte das sie vom Datentyp //float// zu sein hat. Da das Resultat des random() Aufrufs eine gebrochen rationale Zahl zurück gibt - //int// kann nur mit Ganzzahlen gefüllt werden.
+Im zweiten Beispiel erzeugen wir gleichförmige Kreise deren Durchmesser ebenfalls zufällig ist. Dies geht nur mittels Zuhilfenahme von einer [[lesson:35#datentypen|Variable]] deren Wert bei der Breite und Höhe der Ellipse verwendet wird. Beachte das sie vom Datentyp *float* zu sein hat. Da das Resultat des random() Aufrufs eine gebrochen rationale Zahl zurück gibt - *int* kann nur mit Ganzzahlen gefüllt werden.
 
-====== Bsp.: random 3 ======
-
-[code|processing]
+###### Bsp.: random 3
+```processing
 void setup () {
   size(200, 200);
   // aktiviert Kantenglättung
@@ -95,12 +91,11 @@ void draw () {
     ellipse (posX, posY, 20, 20);
   }
 }
-[/code]
+```
 
 Bis auf die Abmaße haben wir im dritten Beispiel mit Anzahl, Position und Farbe fast alle möglichen Attribute in unserer simplen Darstellung vom Zufall bestimmt. Die Verwendung von random() ist also nicht automatisch ein Rezept für die Erstellung von hochwertigen Grafiken. Setze es mit Bedacht ein um geringe Abweichungen in deinem Arrangement zu generieren oder die Verteilung im Aufbau deines Programmes zu organisieren - für abwechslungsreiche Resultate.
 
-=== noise ===
-
+### noise
 Im Gegensatz zu random() ist [[processing-reference:noise()]] eine kontrollierbarere Methode um Zufall zu erzeugen. Sie basiert auf der Theorie des [[http://en.wikipedia.org/wiki/Perlin_noise|Perlin Noise]], 1982 von Ken Perlin für den legendären Film [[http://en.wikipedia.org/wiki/Tron_(film)|Tron]] entwickelt.
 random() führt die Bestimmung des Zufallswertest jedes Mal auf neue aus - unabhänig von vorherigen Ergebnissen. Dieser Aspekt unterscheidet beide Funktionen. noise() bezieht sich auf das Resultat des letzten Aufrufes und fügt ihm eine leichte Varianz hinzu. Auf dieser Grundlage werden in der Computergrafik natürlich wirkende [[http://toxi.co.uk/p5/noiseDetail/|Texturen]], [[http://toxi.co.uk/p5/perlin/|Gelände]] und [[http://toxi.co.uk/p5/perlin/filteredClouds/|Wolken]] generiert. Die Varianz verteilt sich auf eine bestimmte Anzahl von Funktionen die unterschiedliche Frequenzen und Amplituden besitzen. Durch Addition all dieser Wellen erhählt man ein harmonisches/gleichmäßiges Rauschen. [[http://freespace.virgin.net/hugo.elias/models/m_perlin.htm|Weiterführend]]
 
@@ -109,9 +104,8 @@ random() führt die Bestimmung des Zufallswertest jedes Mal auf neue aus - unabh
   * **noise(x, y, z)** Zufallszahl in dreidimensionaler Abfolge, z.B. für eine räumlichen Wolke.
   * **noiseDetail(octaves)** definiert die Anzahl an Wellen die addiert das Rauschen ergeben. Je größer die Anzahl - umso feiner die Varianz. Processing arbeitet standardmäßig mit vier Oktaven.
 
-====== Bsp.: random() vs. noise() ======
-
-[code|processing]
+###### Bsp.: random() vs. noise()
+```processing
 size(600, 170);
 background (255);
 noStroke ();
@@ -128,4 +122,4 @@ for (int i=0; i < width; i += 3) {
   float r = random (10, 30);
   rect (i, r, 2, 20);
 }
-[/code]
+```
