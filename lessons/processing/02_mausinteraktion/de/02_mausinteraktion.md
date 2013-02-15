@@ -62,7 +62,7 @@ rect (10, 10, 80, 80);
 // ...
 ```
 
-Einen Durchlauf des draw() Abschnitts bezeichnet man als [[http://de.wikipedia.org/wiki/Einzelbild_(Film)|Einzelbild]] (ursprünglich aus dem Film). Processing versucht pro Sekunde 60 dieser Einzelbilder zu erzeugen und im Sketchfenster abzubilden. Diese Bildfrequenz wird im Bereich der Computergrafik als [[processing-reference:frameRate]] bezeichnet.
+Einen Durchlauf des draw() Abschnitts bezeichnet man als [Einzelbild](http://de.wikipedia.org/wiki/Einzelbild_(Film)) (ursprünglich aus dem Film). Processing versucht pro Sekunde 60 dieser Einzelbilder zu erzeugen und im Sketchfenster abzubilden. Diese Bildfrequenz wird im Bereich der Computergrafik als [[processing-reference:frameRate]] bezeichnet.
 
   * **frameRate** beinhaltet die aktuell angestrebte Anzahl von Einzelbildern (frames) der Processing Sketches.
   * **frameRate()** erlaubt das Steuern der Bildfrequnz (wie oft der draw() Block pro Sekunde abgearbeitet wird) durch Angabe einer Ganzzahl. Für Processing stellt es jedoch nur einen Richtwert dar - Abweichungen sind möglich.

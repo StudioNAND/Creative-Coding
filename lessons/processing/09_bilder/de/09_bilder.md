@@ -160,7 +160,7 @@ image (img, 66, 0);
 ```
 
 #### Auslesen
-Die bekannte Vorgehensweise durch Angabe von x und y Koordinate bei der Positionierung und Skalierung von Elementen auf der Zeichenfläche liegt auch bei dem Auslesen von Bildern vor. Alle Bildpunkte (Pixel) sind in einem [[http://de.wikipedia.org/wiki/Kartesisches_Koordinatensystem|kartesischen]] Koordinatensystem angeordnet. Wie im Sketchfenster starten beide Achsen in der oberen linken Ecke an der Position 0,0. Jeder einzelne Pixel ist auf diese Weise eindeutig, durch die Angabe von x und y, identifizierbar.
+Die bekannte Vorgehensweise durch Angabe von x und y Koordinate bei der Positionierung und Skalierung von Elementen auf der Zeichenfläche liegt auch bei dem Auslesen von Bildern vor. Alle Bildpunkte (Pixel) sind in einem [kartesischen](http://de.wikipedia.org/wiki/Kartesisches_Koordinatensystem) Koordinatensystem angeordnet. Wie im Sketchfenster starten beide Achsen in der oberen linken Ecke an der Position 0,0. Jeder einzelne Pixel ist auf diese Weise eindeutig, durch die Angabe von x und y, identifizierbar.
 Wenn wir von Bildpunkten bzw. Pixeln sprechen, beziehen wir uns immer auf den Farbwert an einer bestimmten Stelle. In Processings Funktionsumfang existiert der Befehl get() zum Erfragen von Farbwerten:
 
   * **get()** gibt den Farbwert eines Bildes oder Pixels zurück, bzw. Bildausschnitt. Das Ergebnis ist vom Datentyp *color*. [[processing-reference:get()]]```processing
@@ -331,4 +331,4 @@ void draw(){
   shape(s, 200, 50, s.getWidth()*5, s.getHeight()*5);
 }
 ```
-Weiter Befehle findet ihr in der Referenz von [[http://www.processing.org/reference/PShape.html|PShape]]
+Weiter Befehle findet ihr in der Referenz von [PShape](http://www.processing.org/reference/PShape.html)

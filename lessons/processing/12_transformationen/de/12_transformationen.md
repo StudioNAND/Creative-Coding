@@ -32,7 +32,7 @@ translate() verschiebt dabei nicht nur den Ursprung des nachfolgenden Objekts, s
 
 ### Rotieren
 {{/files/documents/b09_02_rotate.png}}
-Über rotate() können alle gezeichneten Element gedreht werden. Dabei werden Elemente nicht um den Punkt gedreht an dem sie gezeichnet werden, sondern um den **Ursprung** von dem aus sie gezeichnet werden. Das heisst, dass der einfache Aufruf von rotate() das gesamte Koordinatensystem der Sketch rotiert. Der einzige Parameter von rotate() gibt den Grad der Drehung im [[http://de.wikipedia.org/wiki/Bogenmass|Bogenmaß]] an, wobei 2 PI einer vollen Drehung entsprechen. Um zwischen Bogenmaß und Gradmaß umzurechnen stellt Processing die Funktionen radians() und degrees() zu Verfügung.
+Über rotate() können alle gezeichneten Element gedreht werden. Dabei werden Elemente nicht um den Punkt gedreht an dem sie gezeichnet werden, sondern um den **Ursprung** von dem aus sie gezeichnet werden. Das heisst, dass der einfache Aufruf von rotate() das gesamte Koordinatensystem der Sketch rotiert. Der einzige Parameter von rotate() gibt den Grad der Drehung im [Bogenmaß](http://de.wikipedia.org/wiki/Bogenmass) an, wobei 2 PI einer vollen Drehung entsprechen. Um zwischen Bogenmaß und Gradmaß umzurechnen stellt Processing die Funktionen radians() und degrees() zu Verfügung.
   * **rotate()** dreht das gesamte Koordinatensystem um seinen Ursprung (x:0, y:0) nach dem im Bogenmaß gegebenen Winkel. Eine Drehung von 360 Grad entsprechen dabei 2 PI (6.2831855...). Processing bietet neben dem Ausdruck PI weiterhin HALF_PI und TWO_PI. [[processing-reference:rotate()]]```processing
 rotate (1.349);
 ```

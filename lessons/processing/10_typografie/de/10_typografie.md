@@ -6,7 +6,7 @@
 ---
 
 ### Schriften in Processing
-Innerhalb von Processing wird das Schriftformat vlw verwendet. Anders als bei Vektorschriften liegt dabei jedes Zeichen seperat als gerastertes Bild vor. Diese Bildinformationen beschränken sich pro Pixel auf die Angabe von schwarz (1) oder weiß (0) - wird das Pixel gefüllt oder nicht. Eine solche Schrift nennt man deshalb Bitmap-Font ([[http://de.wikipedia.org/wiki/Bit|Bit]]), da nur zwei Möglichkeiten existieren.
+Innerhalb von Processing wird das Schriftformat vlw verwendet. Anders als bei Vektorschriften liegt dabei jedes Zeichen seperat als gerastertes Bild vor. Diese Bildinformationen beschränken sich pro Pixel auf die Angabe von schwarz (1) oder weiß (0) - wird das Pixel gefüllt oder nicht. Eine solche Schrift nennt man deshalb Bitmap-Font ([Bit](http://de.wikipedia.org/wiki/Bit)), da nur zwei Möglichkeiten existieren.
 Grund für diese umständliche und qualitativ ungünstige Lösung ist die Funktion des Webexports. Da die Verfügbarkeit der Schriften im Betriebssystem von Betrachtern im Internet keine Vorraussetzung darstellen soll.
 
 #### Laden von Schriften

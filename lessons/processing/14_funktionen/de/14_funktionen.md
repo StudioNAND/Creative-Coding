@@ -30,7 +30,7 @@ Mithilfe dieser Statements können wir unser Programm bisher in "Funktionsbereic
   * **void draw()** - wird, je nach [[processing-reference:frameRate()]] pro Sekunde ausgeführt (default 60 Frames pro Sekunde) - Hauptteil unseres Processing Programms.
   * **mousePressed()** - wird **einmal** ausgeführt, wenn die Maus gedrückt wird (Vergleiche dazu [[processing-reference:mousePressed]])
   * **keyPressed()** - wird **einmal** ausgeführt, wenn eine Taste auf der Tastatur gedrückt wird (Vergleiche dazu [[processing-reference:keyPressed]])
-Neben den von Processing vordefinierten Funktionen (weitere können über die [[http://www.processing.org/reference/|Reference]] gefunden werden) haben wir auch die Möglichkeit eigene Funktionen zu schreiben und somit Programme gemäß unseren Anforderungen zu strukturieren. Dabei schreiben wir für jede Aufgabe die wir über unseren Code realisieren wollen eine *Funktion*. Diese können wir dann, wann immer wir sie brauchen, aufrufen. Das hat zwei große Vorteile:
+Neben den von Processing vordefinierten Funktionen (weitere können über die [Reference](http://www.processing.org/reference/) gefunden werden) haben wir auch die Möglichkeit eigene Funktionen zu schreiben und somit Programme gemäß unseren Anforderungen zu strukturieren. Dabei schreiben wir für jede Aufgabe die wir über unseren Code realisieren wollen eine *Funktion*. Diese können wir dann, wann immer wir sie brauchen, aufrufen. Das hat zwei große Vorteile:
   - Unser Code wird kürzer und übersichtlicher.
   - Wir brauchen Codeteile nicht immer und immer wieder zu schreiben, was die Fehlerquote senkt.
 Dieses Prinzip, komplexe Aufgaben in ihre Grundbestandteile zu gliedern, um diese später einfach wiederverwenden zu können, bezeichnet man als *Modularität*.

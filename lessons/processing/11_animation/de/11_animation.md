@@ -297,9 +297,9 @@ Es existieren bereits einige mathematische Grundlagen um gleichförmige Animatio
   * **cos()** Kosinuswert für einen gegeben Winkel [[processing-reference:cos()]]
   * **sin()** Sinuswert für einen gegebenen Winkel [[processing-reference:sin()]]
 
-Im Bereich von zwei [[http://de.wikipedia.org/wiki/Kreiszahl|PI]] (Kreiszahl) bewegt sich die Kurve einmal durch den kompletten Bereich von 0 zu 1 und wieder zurück. Diesen Wert sehen wir als relative Position auf unserer *x-Achse* - multiplizieren ihn demnach mit der Breite unserer Sketches. Der Kurvenverlauf der Sinuskurve auf der *y-Achse* spiegelt folglich die Position des Kreises wieder.\\ 
+Im Bereich von zwei [PI](http://de.wikipedia.org/wiki/Kreiszahl) (Kreiszahl) bewegt sich die Kurve einmal durch den kompletten Bereich von 0 zu 1 und wieder zurück. Diesen Wert sehen wir als relative Position auf unserer *x-Achse* - multiplizieren ihn demnach mit der Breite unserer Sketches. Der Kurvenverlauf der Sinuskurve auf der *y-Achse* spiegelt folglich die Position des Kreises wieder.\\ 
 Führen wir die folgenden Zeilen aus, ähnelt das Resultat der Draufsicht eines Pendels. An der linken und rechten Fensterseite kommt es zu einem Abbremsen - in der Mitte besitzt der Kreis seine maximale Geschwindigkeit.
-Die Variable ''pos'' wird zur Steuerung der Bewegung genutzt. Sie beinhaltet einen Wert zwische 0 und zwei [[http://de.wikipedia.org/wiki/Kreiszahl|PI]], ein vollständiger Kurvendurchlauf. Momentan addieren wir in jedem [[lesson:10#vorbereitung_fortlaufende_programme|draw()]]-Durchlauf 0.1 auf ''pos''. Je größer der Summand, so schneller der Ablauf der Animation.
+Die Variable ''pos'' wird zur Steuerung der Bewegung genutzt. Sie beinhaltet einen Wert zwische 0 und zwei [PI](http://de.wikipedia.org/wiki/Kreiszahl), ein vollständiger Kurvendurchlauf. Momentan addieren wir in jedem [[lesson:10#vorbereitung_fortlaufende_programme|draw()]]-Durchlauf 0.1 auf ''pos''. Je größer der Summand, so schneller der Ablauf der Animation.
 
 ```processing
 // dient zur Ablages des Animationsfortgangs 

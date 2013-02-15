@@ -13,7 +13,7 @@ int number = 10;
   * **Float** - gebrochene Zahl (Fließkommazahl). Die Trennung erfolgt hierbei durch einen Punkt, nicht wie im Deutschen gewohnt durch ein Komma. [[processing-reference:float]]```processing
 float number = 12.5819;
 ```
-  * **Character** - speichert ein einzelnes Zeichen in der [[http://de.wikipedia.org/wiki/Unicode|Unicode]] - Codierung, z.B.: 'a', '?', 'ä'. Beachte die einzelnen Anführungszeichen um das Zeichen auf der rechten Seite des Istgleich! [[processing-reference:char]]```processing
+  * **Character** - speichert ein einzelnes Zeichen in der [Unicode](http://de.wikipedia.org/wiki/Unicode) - Codierung, z.B.: 'a', '?', 'ä'. Beachte die einzelnen Anführungszeichen um das Zeichen auf der rechten Seite des Istgleich! [[processing-reference:char]]```processing
 char a = 'a';
 ```
   * **Boolean** - [[http://de.wikipedia.org/wiki/Boolesche_Algebra|Bool'scher Wert]] kann nur einer "wahr" - ''true'' oder "nicht wahr" - ''false'' beinhalten. Wir treffen diesen Datentyp meist bei *if*-Bedingungen an. [[processing-reference:boolean]]```processing
@@ -23,10 +23,10 @@ boolean nice = true;
 color pink = color(255, 0, 255);
 ```
 
-Diese [[lesson:35|Datentypen]] werden auch [[http://en.wikipedia.org/wiki/Primitive_type|primitiv]] genannt, da ihr Vorkommen, ihre Struktur und ihre Größe in der verwendeten Programmiersprache fest verankert sind. Beispielsweise kann eine Variable vom Typ *int* immer nur einen ganzzahligen Wert beinhalten. Dieser Fakt hat in unseren Programmen bisher kein Hindernis dargestellt - erlaubte uns aber, speziell im Bereich der [[lesson:17|Animation]], nur eine stark begrenzte Anzahl von Elementen zu bearbeiten.\\ 
-Neben den *primitiven* Datentypen gibt es noch die sogenannten [[http://en.wikipedia.org/wiki/Composite_type|zusammengesetzten]] Datentypen. Ihre Größe und ihr Umfang ist nicht vorgegeben. Ihre Struktur kann in einigen Fällen  verändert werden, da sie im Grunde aus *primitiven* Datentypen zusammengesetzt sind.\\ 
+Diese [[lesson:35|Datentypen]] werden auch [primitiv](http://en.wikipedia.org/wiki/Primitive_type) genannt, da ihr Vorkommen, ihre Struktur und ihre Größe in der verwendeten Programmiersprache fest verankert sind. Beispielsweise kann eine Variable vom Typ *int* immer nur einen ganzzahligen Wert beinhalten. Dieser Fakt hat in unseren Programmen bisher kein Hindernis dargestellt - erlaubte uns aber, speziell im Bereich der [[lesson:17|Animation]], nur eine stark begrenzte Anzahl von Elementen zu bearbeiten.\\ 
+Neben den *primitiven* Datentypen gibt es noch die sogenannten [zusammengesetzten](http://en.wikipedia.org/wiki/Composite_type) Datentypen. Ihre Größe und ihr Umfang ist nicht vorgegeben. Ihre Struktur kann in einigen Fällen  verändert werden, da sie im Grunde aus *primitiven* Datentypen zusammengesetzt sind.\\ 
 Einen zusammengesetzten Datentypen haben wir bereits bei der Arbeit mit [[lesson:16|Text]] kennengelernt:
-  * **String** - Kette aus Zeichen in [[http://de.wikipedia.org/wiki/Unicode|Unicode]] - Codierung ("Creative", "Coding", "Creative Coding", etc. Umschlossen von doppelten Anführungszeichen!) [[processing-reference:String]]```processing
+  * **String** - Kette aus Zeichen in [Unicode](http://de.wikipedia.org/wiki/Unicode) - Codierung ("Creative", "Coding", "Creative Coding", etc. Umschlossen von doppelten Anführungszeichen!) [[processing-reference:String]]```processing
 String text = "too much!";
 ```
 
