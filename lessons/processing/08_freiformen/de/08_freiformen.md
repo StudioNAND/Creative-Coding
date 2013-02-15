@@ -17,7 +17,7 @@ beginShape (POINTS);
 
 // beginne nur Linien zu zeichnen,
 // die resultierende Fläche aber nicht
-// zu f&uuml;llen
+// zu füllen
 beginShape (LINES);
 ```
   * **endShape()** der Aufruf beendet das Zeichnen der Freiform. Diese setzt sich aus allen zwischen beginShape() und endShape() ausgeführten Zeichenbefehlen (z.B. vertex()) zusammen. Wenn bei beginShape() ein Parameter verwendet wurde, sollte dieser hier ebenfalls angegeben werden. [[processing-reference:endShape()]]```processing
