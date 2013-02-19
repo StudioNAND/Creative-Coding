@@ -28,52 +28,65 @@ Als Basis zum Zeichnen in Processing ist das Sketchfenster in ein [kartesisches 
 Neben dem zweidimensionalem Raum können unter Hinzunahme der *z*-Achse **dreidimensionale** Abbildungen erzeugt werden. Die dritte Achse verläuft ebenfalls durch die **obere, linke** Ecke, jedoch *orthogonal* (in einem rechten Winkel) zum Bildschrim. Positive Werte auf der *z*-Achse befinden vor dem Bildschirm, negative Werte dahinter. In den folgenden Lessons konzentrieren wir uns jedoch auf das Gestalten mit Code in 2D.
 
 #### Größe des Sketchfensters
-Die Größe der Zeichenfläche lässt sich mit dem Aufruf des Befehls size() festlegen. Processing passt die Ausgabefläche anderenfalls auf 100x100 Pixel an. Damit diese Einstellung funktioniert, braucht das Programm zwei Informationen von uns. Wie breit und wie hoch die gewünschte Zeichenfläche sein soll. Bei Positionen und Größen im 2d-Raum wird immer erst der Wert auf der *x*-Achse und danach der *y* Wert genannt (demnach erst die Breite, dann die Höhe). Beide Werte kommen als Parameter zwischen die beiden runden Klammern, die dem Begriff ''size'' folgen.
-  * **size(width, height)** legt die Größe der sichtbaren Zeichenfläche (im Sketchfenster) fest. Das unten aufgeführte Beispiel legt einen Bereich von 800x600 Pixeln im Ausgabefenster an. [[processing-reference:size()]]```processing
+Die Größe der Zeichenfläche lässt sich mit dem Aufruf des Befehls `size()` festlegen. Falls die Sketch diesen Befehl nicht beinhaltet, passt Processing die Ausgabefläche selbstständig auf 100x100 Pixel an. Damit diese Einstellung funktioniert, braucht das Programm zwei Informationen von uns: wie breit und wie hoch die gewünschte Zeichenfläche sein soll. Bei Positionen und Größen im 2d-Raum wird immer erst der Wert auf der *x*-Achse und danach der *y* Wert genannt (demnach erst die Breite, dann die Höhe). Beide Werte können als *Parameter* zwischen die beiden runden Klammern geschrieben werden, die dem Begriff `‘size’` folgen.
+
+*	**`size(width, height)`** legt die Größe der sichtbaren Zeichenfläche (im Sketchfenster) fest. Das unten aufgeführte Beispiel setzt die Größe des Sketchfensters auf 800x600 Pixel:
+```processing
 size (800, 600);
 ```
 
 ### Visuelle Grundelemente
 #### Punkt
-{{ /files/documents/b01_point.jpg}}
-Ein Punkt ist das simpelste Element der primitiven Grundformen. Nur mit einer *x* und einer *y*-Koordinate nimmt er, ohne spezielle Angaben, die Fläche eines Pixels auf dem Bildschirm ein. Die für die Füllung verwendete Farbe kann mit //[[lesson:9#flaechen_fuellen_raender_einfaerben|stroke()]]// festgelegt werden.
-  * **point(x, y)** zeichnet einen Punkt auf die Zeichenfläche. Bestimmt wird dieser durch ''*x*'' & ''*y*''-Koordinate. [[processing-reference:point()]] ```processing
-point (0, 0);   //obere-linke Ecke
-point (43, 89); 
+![Punkt](/files/documents/b01_point.jpg "Punkt")
+Der Punkt ist das einfachste Element der primitiven Grundformen. Nur mit einer *x* und einer *y*-Koordinate nimmt er, ohne spezielle Angaben, die Fläche eines Pixels auf dem Bildschirm ein. Die für die Füllung verwendete Farbe kann mit dem [`stroke()`](lesson9#flaechen_fuellen_raender_einfaerben)-Befehl festgelegt werden.
+
+*	**`point(x, y)`** zeichnet einen Punkt auf die Zeichenfläche. Bestimmt wird dieser durch die *x* & *y*-Koordinate.
+```processing
+point (0, 0);   // obere, linke Ecke
+point (43, 89); // x = 43 & y = 89
 ```
 
 #### Linie
-{{ /files/documents/b01_line.jpg}}
-Als zweites Element lernen wir die Linie kennen. Als eine Reihe von Punkten erstreckt sie sich zwischen einem Anfangs- und einem Endpunkt. Um eine Linie zu zeichnen verwendet man den line() Befehl. Dieser hat genau vier Parameter, zwei Werte für den Anfangs- und zwei für den Endpunkt.
-  * **line(x1, y1, x2, y2)** zeichnet eine Linie zwischen zwei Punkten. Punkt1 und Punkt2 werden jeweils durch eine *x* & *y*-Koordinate angegeben. [[processing-reference:line()]] ```processing
+![Linie](/files/documents/b01_line.jpg "Linie")
+Als zweites Element lernen wir die Linie kennen. Sie verbindet einen Anfangs- und einem Endpunkt. Um eine Linie zu zeichnen verwendet man den `line()` Befehl. Dieser hat genau vier Parameter, die *x* und die *y*-Koordinate für den Anfangs- und für den Endpunkt.
+
+*	**`line(x1, y1, x2, y2)`** zeichnet eine Linie zwischen zwei Punkten. Punkt1 und Punkt2 werden jeweils durch eine *x* & *y*-Koordinate angegeben.
+```processing
 line (10, 20, 80, 60);
 ```
 
 #### Rechteck
-{{ /files/documents/b01_rect.jpg}}
-Der Befehl rect() ermöglicht das Fällen bzw. Umranden einer rechteckigen Fläche. Bestimmt durch den oberen-linken Punkt dehnt dich diese nach rechts-unten aus. Dafür benötigt Processing neben der *x* und *y*-Koordinate zur Punktbestimmung die Breite und Höhe des Elements.
-  * **rect(x, y, width, height)** zeichnet ein Rechteck mit einer definierten Breite und Höhe an eine bestimmte Position auf die Zeichenfläche des Sketchfensters. [[processing-reference:rect()]] ```processing
+![Rechteck](/files/documents/b01_rect.jpg "Rechteck")
+Der Befehl `rect()` (vom engl. *rectangle* für *Rechteck*) ermöglicht das Zeichnen einer rechteckigen Fläche. Die Position orientiert sich am oberen, linken Punkt. Die Größe an der Ausdehnung nach rechts und unten von diesem. Processing benötigt also neben der *x* und *y*-Koordinate zur Positionsbestimmung auch noch die Breite und Höhe des Rechtecks.
+
+*	**`rect(x, y, width, height)`** zeichnet ein Rechteck mit einer definierten Breite (*width*) und Höhe (*height*) an die Position (*x*,*y*) auf die Zeichenfläche der Sketch.
+```processing
 rect (20, 20, 60, 40);
 ```
 
-Alle Außenkante des Vierecks bleiben beim Aufruf von rect() immer parallel zur *x* bzw. *y*-Achse. Um dies zu umgehen kann für das freie Zeichnen von viereckigen Flächen der [[lesson:9#viereck|quad()]] Befehl verwendet werden.
+Für das Zeichnen von Vierecken, bei denen die Innenwinkel nicht auf 90° beschränkt sind, steht ausserdem der [`quad()`](lesson1#viereck)-Befehl zur Verfügung.
 
 #### Ellipse
-{{ /files/documents/b01_ellipse.jpg}}
-  * **ellipse(x, y, width, height)** zeichnet eine Ellipse/Kreis in die Zeichenfläche. Grundsätzlich befindet sich der mit ''x'' und ''y'' angegebene Punkt im Zentrum der Ellipse. Die beiden weiteren Werte geben die Breite (''width'') auf der *x*-Achse und Höhe (''height'') auf der *y*-Achse des Elements an. Bei den Größenangaben handelt es sich demnach um den Durchmesser auf der jeweiligen Achse, nicht um den Radius. [[processing-reference:ellipse()]] ```processing
+![Ellipse](/files/documents/b01_ellipse.jpg "Ellipse")
+Der Befehl `ellipse()` ermöglicht das Zeichnen einer Ellipse/eines Kreises in die Zeichenfläche. Grundsätzlich befindet sich der mittels *x* und *y*-Koordinaten angegebene Punkt im Zentrum der Ellipse. Das zweite Wertepaar gibt, wie beim `rect()` Befehl, die Breite und Höhe der Ellipse an. Sind beide Werte hier gleich, erhalten wir einen Kreis. Durch die Breiten- und Höhenangaben handelt es sich also hierbei um die *Durchmesser* und nicht die Radien der gezeichneten Ellipsen und Kreise!
+
+* **`ellipse(x, y, width, height)`** zeichnet eine Ellipse mit einer definierten Breite (*width*) und Höhe (*height*) an die Position (*x*,*y*) auf die Zeichenfläche der Sketch.
+```processing
 ellipse (50, 50, 45, 55);
 ```
 
 #### Viereck
-{{ /files/documents/b01_quad.jpg}}
-Neben rect() erlaubt die erweiterte Möglichkeit quad() ebenfalls das Darstellen von Vierecken. Mittels vier ausformulierten Punkten können Formen gezeichnet werden, die keine Innenwinkel von 90° besitzen und parallele Seitenpaare haben.
-  * **quad(x1, y1, x2, y2, x3, y3, x4, y4)** zeichnet ein Viereck in Zeichenfläche. Bestimmt durch 4 Punkte, jeweils eine *x* und *y* Koordinate, beschreiben die Lage der Fläche. [[processing-reference:quad()]]```processing
+![Viereck](/files/documents/b01_quad.jpg "Viereck")
+Der `quad()` Befehl erlaubt das Zeichnen von beliebigen Vierecken, also auch von [Parallelogrammen](https://de.wikipedia.org/wiki/Parallelogramm), [Trapezen](https://de.wikipedia.org/wiki/Trapez_(Geometrie)) und unregelmäßigen Vierecken. Diese Formen können durch die Angabe von vier Eckpunkten gezeichnet werden:
+
+* **`quad(x1, y1, x2, y2, x3, y3, x4, y4)`** zeichnet ein Viereck auf die Zeichenfläche der Sketch. Bestimmt durch 4 Punkte, jeweils eine *x* und *y*-Koordinate, beschreiben die Lage der Fläche.
+```processing
 quad (12, 19, 31, 85, 67, 74, 80, 19);
 ```
 
 ### Graustufen
-{{ /files/documents/b01_grey.jpg}}
-Im [[http://de.wikipedia.org/wiki/RGB-Farbraum|RGB Farbraum]] mischen sich Graustufen aus gleichen Anteilen der drei Kanäle Rot, Grün und Blau. Durch die [additive](http://de.wikipedia.org/wiki/Additive_Farbsynthese) Zusammensetzung erhält man bei drei vollen Teilen die Farbe weiß, bei keinen Angaben für R,G,B schwarz. Processing bietet für diesen Fall eine Kurzschreibweise für die Festlegung von Füll- und Strichfarben. Statt drei gleicher Werte wird nur eine Wert zwischen den runden Klammern genannt. Die Zeile fill(38, 38, 38); hat die gleiche Aufgabe wie fill(38);.
+![Graustufen](/files/documents/b01_grey.jpg "Graustufen")
+Im [RGB Farbraum](http://de.wikipedia.org/wiki/RGB-Farbraum) mischen sich Graustufen aus gleichen Anteilen der drei Kanäle *R*ot, *G*rün und *B*lau. Der Anteil jedes Farbkanals wird dabei durch eine Zahl von 0 und 255 angegeben. Durch die [additive](http://de.wikipedia.org/wiki/Additive_Farbsynthese) Zusammensetzung erhält man somit bei drei vollen Teilen die Farbe weiß, bei keinen Angaben für R,G,B schwarz. Processing bietet für diesen Fall eine Kurzschreibweise für die Festlegung von Füll- und Strichfarben. Statt drei gleicher Werte wird nur ein Wert zwischen den runden Klammern angegeben. Die Zeile `fill(38, 38, 38);` führt also zum gleichen Ergebnis wie `fill(38);`.
 
 ```processing
 background (110);  // grau
@@ -89,37 +102,47 @@ fill (0, 90);      // schwarz, transparent
 stroke (255, 200); // weiß, transparent
 ```
 
-Aufrufe von fill() und stroke() lassen sich wie folgt lesen:
-  * **1 Wert** Grauton, deckend
-  * **2 Werte** Grauton, mit Transparenzangabe
-  * **3 Werte** RGB Farbtonangabe, deckend
-  * **4 Werte** RGB Farbtonangabe, mit Transparenzangabe
+Aufrufe von `fill()` und `stroke()` lassen sich wiefolgt lesen:
+
+* **1 Wert** Grauton, deckend
+* **2 Werte** Grauton, mit Transparenzangabe
+* **3 Werte** RGB Farbtonangabe, deckend
+* **4 Werte** RGB Farbtonangabe, mit Transparenzangabe
 
 ### Farben
-{{ /files/documents/b01_rgb_system.jpg}}
-Standardmäßig arbeitet Processing mit dem [RGBA-Farbraum](http://de.wikipedia.org/wiki/RGB-Farbraum#RGBA-Farbmodell) (Rot, Grün, Blau, Alpha). Für jeden der sogenannten Kanäle steht ein Wertebereich von 256 Einheiten, beginnend bei 0, zur Verfügung um das Mischverhältnis zu bestimmen [additive Farbmischung](http://de.wikipedia.org/wiki/Additive_Farbsynthese). Ein Anteil von 0 bedeutet, daß kein Teil dieses Kanals in die Farbmischung eingeht - mit 255 der komplette Kanal.\\ 
-Drei Befehlen bietet Processing um Farben für unterschiedliche Eigenschaften/Bereiche festzulegen: background() für das einfärben der gesamten Zeichenfläche, fill() für die Füllfarbe und stroke() für die Umrandung von visuellen Elemente.
+![RGB Farbsystem](/files/documents/b01_rgb_system.jpg "RGB Farbsystem")
+Standardmäßig arbeitet Processing mit dem [RGBA-Farbraum](http://de.wikipedia.org/wiki/RGB-Farbraum#RGBA-Farbmodell) (*R*ot, *G*rün, *B*lau, *A*lpha). Für jeden der sogenannten Farbkanäle steht ein Wertebereich von 256 Einheiten (beginnend bei ‘0’) zur Verfügung um ihr Mischverhältnis zu bestimmen. Diese Farbmischverfahren wird als [additive Farbmischung](http://de.wikipedia.org/wiki/Additive_Farbsynthese) bezeichnet. Ein Anteil von 0 bedeutet, dass kein Teil dieses Kanals in die Farbmischung eingeht, ein Anteil von 255 steht für den kompletten Kanal.
+
+Drei Befehle bietet Processing um Farben für unterschiedliche Eigenschaften/Bereiche festzulegen: `background()` für das einfärben der gesamten Zeichenfläche, `fill()` für die Füllfarbe und `stroke()` für die Umrandung von visuellen Elementen.
 
 #### Hintergrund einfärben
-Processing färbt ohne unser Zutun den Hintergrund des Sketchfensters grau ein. Wenn wir die Fläche leeren wollten, sie mit einem Farbton füllen, müssten wir ein Rechteck im Fensterformat zeichnen. Diese Funktionalität bietet uns ebenfalls der Befehl background(). Ausgestattet mit Informationen über die Anteiligkeit der Farbkanäle überschreibt er den momentanen Inhalt der Zeichfläche (ohne das wie bei rect() Position oder Größe angegeben werden muss).
-  * **background(r, g, b)** löscht den Inhalt der Zeichenfläche durch homogenes Füllen mit einer Farbe. Diese wird durch die drei Kanäle ''r'' Rot, ''g'' Grün und ''b'' Blau bestimmt. [[processing-reference:background()]]```processing
-background (231, 0, 89);
+Processing färbt ohne unser Zutun den Hintergrund des Sketchfensters grau ein. Wir können den Hintergrund mit einer beliebigen Farbe füllen und somit die Zeichenfläche leeren, bevor wir neue Elemente zeichnen. Diese Funktionalität bietet uns der Befehl `background()`. Ausgestattet mit Informationen über die Anteile der Farbkanäle überschreibt er den momentanen Inhalt der Zeichfläche.
+
+* **`background(r, g, b)`** löscht den Inhalt der Zeichenfläche durch homogenes Füllen mit einer Farbe. Die Farbe wird entweder durch einen Grauton-Wert oder durch drei Kanäle **R**ot, **G**rün und **B**lau bestimmt.
+```processing
+background(231, 0, 89);
 ```
 
-#### Flächen füllen & Ränder einfärbenUm Flächen/Einschlüsse farblich zu füllen kann man dem grafischen Element keine konkreten Informationen mit auf den Weg geben. Innerhalb von Processing existiert für Füll- und Strichfarbe jeweils ein Farbeimer, bildlich gesprochen. Der Inhalt dieser beiden Eimer kann mit zwei Funktionen bestimmt werden: fill() für die Füllfarbe und stroke() für die Farbgebung der Umrandung. Wenn keine Farbe angewendet werden soll kommen noFill() und noStroke() ins Spiel. Diese Einstellungen bleiben solange aktiv, bis sie durch einen Aufruf von fill() bzw. noFill() für die Füllfarbe und stroke() bzw. noStroke() für die Umrandung geändert werden.
-  * **fill(r, g, b)** setzt die Füllfarbe für alle im Anschluss gezeichneten Elemente. Die drei Werte stehen jeweils für einen Farbkanal: ''r'' Rot, ''g'' Grün und ''b'' Blau. Optional kann durch einen vierten Wert ''a'' die Transparenz bestimmt werden. Der Wertebereich liegt für alle vier Angaben zwischen 0 und 255. [[processing-reference:fill()]]```processing
-fill (255, 0, 0); //volles Rot
-fill (0, 255, 0); //volles Grün
-fill (0, 0, 255); //volles Blau
+#### Flächen füllen & Ränder einfärben
+Bisher haben wir keine Möglichkeit kennengelernt beim Zeichnen von grafischen Elementen deren Füll- und Strichfarben zu bestimmen um diese einfärben zu können. Innerhalb von Processing existiert dazu für Füll- und Strichfarbe jeweils ein – bildlich gesprochen – ‘Farbeimer’. Der Inhalt dieser beiden Eimer kann mit zwei Funktionen bestimmt werden: `fill()` für die Füllfarbe und `stroke()` für die Farbgebung der Linien, Umrandungen eingeschlossen. Wenn keine Farbe angewendet werden soll kommen `noFill()` und `noStroke()` ins Spiel. Diese Einstellungen bleiben solange aktiv, bis sie durch einen Aufruf von `fill()` bzw. `noFill()` für die Füllfarbe und `stroke()` bzw. `noStroke()` für die Umrandung geändert werden.
+
+* **`fill(r, g, b)`** setzt die Füllfarbe für alle im Anschluss gezeichneten Elemente. Die Farbe wird durch drei Kanäle **R**ot, **G**rün und **B**lau bestimmt. Optional kann durch einen vierten **A**lpha-Wert die Transparenz bestimmt werden. Der Wertebereich liegt für alle vier Angaben zwischen 0 und 255.
+```processing
+fill (255, 0, 0); // volles Rot
+fill (0, 255, 0); // volles Grün
+fill (0, 0, 255); // volles Blau
 ```
-  * **noFill()** deaktiviert die Füllfarbe für alle im Anschluss gezeichneten Elemente. [[processing-reference:noFill()]]```processing
-noFill ();
+* **`noFill()`** deaktiviert die Füllfarbe für alle im Anschluss gezeichneten Elemente.
+```processing
+noFill();
 ```
-  * **stroke(r, g, b)** setzt die Farbe für alle im Anschluss gezeichneten Elemente. Die drei Werte stehen jeweils für einen Farbkanal: ''r'' Rot, ''g'' Grün und ''b'' Blau. Optional kann durch einen vierten Wert ''a'' die Transparenz bestimmt werden. Der Wertebereich liegt für alle vier Angaben zwischen 0 und 255. [[processing-reference:stroke()]] ```processing
+* **`stroke(r, g, b)`** setzt die Strichfarbe für alle im Anschluss gezeichneten Elemente. Die Farbe wird durch drei Kanäle **R**ot, **G**rün und **B**lau bestimmt. Optional kann durch einen vierten **A**lpha-Wert die Transparenz bestimmt werden. Der Wertebereich liegt für alle vier Angaben zwischen 0 und 255.
+```processing
 stroke (255, 0, 0); //volles Rot
 stroke (0, 255, 0); //volles Grün
 stroke (0, 0, 255); //volles Blau
 ```
-  * **noStroke()** deaktiviert die Umrandungsfarbe für alle im Folgenden gezeichneten Elemente. [[processing-reference:noStroke()]]```processing
-noStroke ();
+* **`noStroke()`** deaktiviert die Strichfarbe für alle im Folgenden gezeichneten Elemente. **ACHTUNG:** Wenn diese Einstellung aktiv ist, werden Punkte und Linien nicht gezeichnet!
+```processing
+noStroke();
 ```
