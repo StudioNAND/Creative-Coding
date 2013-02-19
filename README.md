@@ -1,9 +1,9 @@
-Creative-Coding
-===============
+![Creative Coding Header](http://www.creativecoding.org/css/blueprint/src/logo.png "Creative Coding Header Image")
+## Learning materials for all [creativecoding.org](http://www.creativecoding.org) lessons in [markdown](http://daringfireball.net/projects/markdown/) format.
 
-Learning materials for [creativecoding.org](http://www.creativecoding.org) in [markdown](http://daringfireball.net/projects/markdown/) format.
+> CURRENT STATUS: We are reworking the German lessons at the moment. Please look at the Git history for which lessons we’ve already commited revisions before translating or editing them!
 
-We would love to provide Creative Coding in as many different languages as possible. Get in touch if you would like to help or simply fork this repository and start writing. If you see any smaller errors that should be corrected, you can also create an ‘issue’ and we’ll ‘fix’ it as quickly as possible.
+We would love to provide Creative Coding in as many different languages as possible. [Get in touch if you would like to help or simply fork this repository and start writing. If you see any smaller errors that should be corrected, you can also create an ‘issue’ and we’ll ‘fix’ it as quickly as possible.
 
 Creative Coding’s main content format for longer text is markdown, so integration should be easy.
 
