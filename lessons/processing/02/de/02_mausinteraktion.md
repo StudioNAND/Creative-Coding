@@ -85,7 +85,7 @@ void draw() {
 
 ### Mausinteraktion
 #### Mausposition
-Die Kommunikation zwischen Benutzer und Programm kann auf vielfältige Weise geschehen. Im Folgenden wollen wir uns auf die Maus, genauer mit deren Position in der Zeichenfläche, beschäftigen. Die Processingumgebung bietet für diesen Zweck vier Ausdrücke: [mouseX](http://processing.org/reference/mouseX.html), [mouseY](http://processing.org/reference/mouseY.html) für die aktuelle Position der Maus und [pmouseX](http://processing.org/reference/pmouseX.html), [pmouseY](http://processing.org/reference/pmouseY.html) für die Position im vorherigen Bild.
+Die Kommunikation zwischen Benutzer und Programm kann auf vielfältige Weise geschehen. Im Folgenden wollen wir uns auf die Maus, genauer mit deren Position in der Zeichenfläche, beschäftigen. Processing bietet vier Schlüsselwörter an, mit denen man auf die Maus-Positionen zugreifen kann: [mouseX](http://processing.org/reference/mouseX.html), [mouseY](http://processing.org/reference/mouseY.html) für die aktuelle Position der Maus and [pmouseX](http://processing.org/reference/pmouseX.html), [pmouseY](http://processing.org/reference/pmouseY.html) für deren Position im vorherigen Bild.
 Alle vier Angaben geben dabei die Distanz zum Koordinatenursprung (oben, links) in Pixeln auf der jeweiligen Achse an.
 
 ###### Bsp.: aktuelle Mausposition 1
@@ -105,7 +105,7 @@ void draw() {
 }
 ```
 
-Durch das Aufrufen des background() Befehls wird vor jedem Zeichnen eines Kreises die Arbeitsfläche vollflächig weiß gefüllt. Es scheint als würde sich ein und der selbe Kreis nach den Vorgaben der Maus bewegen.
+Durch das Aufrufen des [background()](http://processing.org/reference/background_.html) Befehls wird vor jedem Zeichnen eines Kreises die Arbeitsfläche vollflächig weiß gefüllt. Es scheint als würde ein und der selbe Kreis der Maus folgen.
 
 ###### Bsp.: aktuelle und vorherige Mausposition
 ```processing
@@ -114,7 +114,7 @@ void setup() {
 }
 
 void draw() {
-  background (255, 255, 255);
+  background(255, 255, 255);
   line(pmouseX, pmouseY, mouseX, mouseY);
 }
 ```
@@ -124,11 +124,11 @@ Bei schneller Bewegung der Maus wird eine schwarze Linie sichtbar. Diese wird zw
 #### Maustasten
 Um in einem Processing Programm herauszufinden, ob die Maustaste gedrückt ist, müssen wir lediglich den Zustand der Maustaste "abfragen". Genau eine solche Abfrage können wir mit einem neuen Befehl stellen:
 
-  * **[if](http://processing.org/reference/if.html) (** *Bedingung* **) {...}** also "falls" eine von uns genannte Bedingung "wahr" ist (true), wird der darauf folgende Abschnitt in geschweiften Klammern ausgeführt
+  * **[if](http://processing.org/reference/if.html) (** *Bedingung* **) {...}**, also "falls" eine von uns genannte Bedingung "wahr" ist (true), wird der darauf folgende Abschnitt in geschweiften Klammern ausgeführt
 
-Für unsere Abfrage, ob die Taste der Maus gedrückt ist, haben wir nun eine Eigenschaft in unserem Processing Programm ähnlich der [width](http://processing.org/reference/width.html) oder [height](http://processing.org/reference/height.html) Eigenschaft zur Verfügung:
+Für unsere Abfrage, ob die Taste der Maus gedrückt ist, haben wir nun ein weiteres, neues Schlüsselwort in unserem Processing Programm ähnlich der [width](http://processing.org/reference/width.html) oder [height](http://processing.org/reference/height.html) Eigenschaft benutzen:
 
-  * **[mousePressed](http://processing.org/reference/mousePressed.html)** ist die Maustaste gedrückt, oder nicht.
+  * **[mousePressed](http://processing.org/reference/mousePressed.html)** ist die linke Maustaste gedrückt, oder nicht.
 
 Folgendes Beispiel demonstriert, wie man diese Abfrage richtig stellt:
 
@@ -141,7 +141,7 @@ void draw() {
   // lösche den Hintergrund und fülle ihn mit weiss
   background(255, 255, 255);
 
-  // wenn die Maus gedrückt istâ€¦
+  // wenn die linke Maus-Taste gedrückt ist:
   if (mousePressed) {
     // zeichne eine ellipse an der Mausposition
     ellipse(mouseX, mouseY, 10, 10);
@@ -153,7 +153,7 @@ void draw() {
 }
 ```
 
-Bei einer [if](http://processing.org/reference/if.html)-Abfrage wird immer zwischen Ja und Nein entschieden. Im oberen Beispiel haben wir den Status der Maustaste als Bedingung festgelegt - und zeichnen für den Fall "wahr" einen Kreis. Als Gegenstück zum Ja-Abschnitt können wir einen Bereich definieren der nur ausgeführt wird wenn die Maustaste nicht gedrückt wird ("falsch").
+Bei einer [if](http://processing.org/reference/if.html)-Abfrage wird immer zwischen "Ja" ("wahr") und "Nein" ("falsch") entschieden. Ein "vielleicht" gibt es nicht, und würde für einen einfachen Schalter auch keinen Sinn machen. Im oberen Beispiel haben wir den Status der Maustaste als Bedingung festgelegt - und zeichnen für den Fall "wahr" einen Kreis. Als Gegenstück zum Ja-Abschnitt können wir einen Bereich definieren der nur ausgeführt wird wenn die Maustaste nicht gedrückt wird ("falsch").
 
   * **[else](http://processing.org/reference/else.html) {...}** leitet einen Programmblock ein der bei Nichtzutreffen der [if](http://processing.org/reference/if.html)-Bedingung abgearbeitet wird. Dieser Block wird ebenfalls von zwei geschweiften Klammern umfasst.
 
@@ -163,7 +163,7 @@ void draw() {
   // lösche den Hintergrund und fülle ihn mit weiss
   background(255, 255, 255);
 
-  // wenn die Maus gedrückt ist:
+  // wenn die linke Maus-Taste gedrückt ist:
   if (mousePressed) {
     // zeichne eine ellipse an der Mausposition
     ellipse(mouseX, mouseY, 10, 10);
